@@ -25,7 +25,6 @@ import java.util.stream.Stream;
 
 //다량의 문자를 비교하는경우는 해시가 가장 빠른 기법중 하나이다.
 //equals or startwith는 그냥 노가다 문자열 비교이다. (해시 기법 x)
-
 public class PhoneBook {
     public static void main(String[] args) {
         boolean bool = soultion(new String[]{"119", "97674223", "1195524421"});
@@ -41,10 +40,12 @@ public class PhoneBook {
             map.put(number, 0);
 
         for(int i = 0; i<phone_book.length; i++){
-            for (int j = 0; j < phone_book[i].length(); j++) {
-                /*if (map.containsKey(phone_book[i].substring(0, j))) {
+            for (int j = 1; j <= phone_book[i].length(); j++) {
+                System.out.println(i + " - " + j + " : " + phone_book[i].substring(0, j));
+                System.out.println(">> : " + phone_book[i].hashCode());
+                if (map.containsKey(phone_book[i].substring(0, j)) && phone_book[i].hashCode() != phone_book[i].substring(0, j).hashCode()) {
                     return false;
-                }*/
+                }
             }
         }
 
